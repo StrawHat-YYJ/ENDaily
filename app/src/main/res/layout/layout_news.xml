@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!-- listview高度必须给固定值或者matchParent，否则
+    adapter的getView()方法会重复执行很多次-->
+    <com.yyj.ui.XListView
+        android:id="@+id/xlistview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </com.yyj.ui.XListView>
+
+</RelativeLayout>

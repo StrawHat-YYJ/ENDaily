@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/settingdialog_tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="路飞"
+        android:padding="3dp"
+        android:textColor="#209E85"/>
+    <TextView
+        android:id="@+id/settingdialog_tv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="索隆"
+        android:padding="3dp"
+
+        android:textColor="#209E85"/>
+    <TextView
+        android:id="@+id/settingdialog_tv3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="香吉士"
+        android:padding="3dp"
+        android:textColor="#209E85"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#9C9C9C"/>
+    <TextView
+        android:id="@+id/settingdialog_tv4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="娜美"
+        android:padding="3dp"
+        android:textColor="#209E85"/>
+
+</LinearLayout>

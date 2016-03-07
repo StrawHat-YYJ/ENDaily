@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#209E85"
+        android:textColor="#fff"
+        android:textSize="20sp"
+        android:text="轻松一刻"/>
+    <com.yyj.ui.XListView
+        android:id="@+id/social_joke_xlistview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></com.yyj.ui.XListView>
+
+</LinearLayout>

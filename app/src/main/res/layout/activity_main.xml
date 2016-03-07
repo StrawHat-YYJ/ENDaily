@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.administrator.endaily.MainActivity">
+    <RelativeLayout
+        android:id="@+id/title_total"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#209E85">
+        <TextView
+            android:id="@+id/appNameTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="体育周刊"
+            android:textColor="#fff"/>
+        <ImageView
+            android:id="@+id/moreIv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@mipmap/more"/>
+    </RelativeLayout>
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@+id/title_total"
+        android:background="#209E85">
+    </android.support.design.widget.TabLayout>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tablayout">
+    </android.support.v4.view.ViewPager>
+
+</RelativeLayout>
