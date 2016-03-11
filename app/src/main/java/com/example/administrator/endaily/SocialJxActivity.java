@@ -8,6 +8,7 @@ import com.yyj.ConfigConstant.Api;
 import com.yyj.adapter.JokesAdapter;
 import com.yyj.bean.Jokes;
 import com.yyj.parse.BaseParse;
+import com.yyj.ui.ChangeTheme;
 import com.yyj.ui.XListView;
 import com.yyj.utils.dateutil.DateUtils;
 import com.yyj.utils.netUtil.HttpVolley;
@@ -23,9 +24,12 @@ public class SocialJxActivity extends Activity implements XListView.IXListViewLi
     private ArrayList<Jokes.ShowapiResBodyEntity.ContentlistEntity> list=
             new ArrayList<Jokes.ShowapiResBodyEntity.ContentlistEntity>();
     private JokesAdapter jokesAdapter;
+    //请求页数
     private int i=1;
+    private ChangeTheme changeTheme = new ChangeTheme(SocialJxActivity.this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        changeTheme.initTheme();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_social_joke);
         mxListView= (XListView) findViewById(R.id.social_joke_xlistview);
@@ -85,4 +89,14 @@ public class SocialJxActivity extends Activity implements XListView.IXListViewLi
             }
         }
     };
+
+    @Override
+    protected void onDestroy() {
+        changeTheme.clearTheme();
+        super.onDestroy();
+    }
+
+    public void changeTheme(){
+        changeTheme.changeTheme();
+    }
 }

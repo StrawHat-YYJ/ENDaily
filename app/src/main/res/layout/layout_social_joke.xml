@@ -7,8 +7,8 @@
         android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#209E85"
-        android:textColor="#fff"
+        android:background="?attr/titleBackground"
+        android:textColor="?attr/titleColor"
         android:textSize="20sp"
         android:text="轻松一刻"/>
     <com.yyj.ui.XListView

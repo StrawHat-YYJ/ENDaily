@@ -7,12 +7,30 @@ import android.app.Application;
  */
 public class BaseApplication extends Application{
     private static BaseApplication application;
+    private boolean isNightMode;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        setIsNightMode(false);
+    }
 
     public static BaseApplication getApplication() {
+        if (application==null) {
+            application= new BaseApplication();
+        }
         return application;
     }
 
     public static void setApplication(BaseApplication application) {
         BaseApplication.application = application;
+    }
+
+    public boolean isNightMode() {
+        return isNightMode;
+    }
+
+    public void setIsNightMode(boolean isNightMode) {
+        this.isNightMode = isNightMode;
     }
 }

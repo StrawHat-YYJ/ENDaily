@@ -1,7 +1,7 @@
 package com.example.administrator.endaily;
 
+import android.content.Context;
 import android.graphics.Color;
-import android.os.Environment;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -12,12 +12,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.yyj.ConfigConstant.Constants;
 import com.yyj.adapter.MyFragmentPagerAdapter;
 import com.yyj.dialog.SettingDialog;
 import com.yyj.fragment.MoreFragment;
 import com.yyj.fragment.NewsFragment;
 import com.yyj.fragment.SocialFragment;
+import com.yyj.ui.ChangeTheme;
 import com.yyj.utils.netUtil.HttpVolley;
 
 import java.io.File;
@@ -35,8 +35,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public MoreFragment moreFragment;
     private long exitTime;
 
+    private ChangeTheme changeTheme = new ChangeTheme(MainActivity.this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        changeTheme.initTheme();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
@@ -89,15 +92,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.moreIv:
-                showSettingDialogFragment();
+                showSettingDialogFragment(MainActivity.this);
                 break;
             default:
                 break;
         }
     }
-    public void showSettingDialogFragment(){
+    public void showSettingDialogFragment(Context context){
         SettingDialog settingDialog= new SettingDialog();
-        settingDialog.show(getSupportFragmentManager(),"");
+        settingDialog.show(getSupportFragmentManager(), "settingDialog");
     }
 
     @Override
@@ -117,6 +120,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onDestroy() {
+        changeTheme.clearTheme();
         super.onDestroy();
         File mfile=new File(HttpVolley.downloadDir);
         File[] files =mfile.listFiles();
@@ -124,5 +128,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             file.delete();
         }
         mfile.delete();
+    }
+
+    public void changeTheme(){
+        changeTheme.changeTheme();
     }
 }

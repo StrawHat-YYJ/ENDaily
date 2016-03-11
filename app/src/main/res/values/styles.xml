@@ -1,11 +1,26 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!-- 日间模式 -->
+    <style name="AppTheme.day" parent="AppTheme">
+        <item name="titleBackground">@color/green_grass</item>
+        <item name="containerBackground">@color/white_dark</item>
+        <item name="titleColor">@color/white</item>
+        <item name="textColor">@color/gray</item>
+    </style>
+    <!-- 夜间模式 -->
+    <style name="AppTheme.night" parent="AppTheme">
+        <item name="titleBackground">@color/gray_dark</item>
+        <item name="containerBackground">@color/gray_light</item>
+        <item name="titleColor">@color/white_dark</item>
+        <item name="textColor">@color/green_light</item>
     </style>
 
 </resources>

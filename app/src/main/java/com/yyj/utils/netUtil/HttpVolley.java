@@ -130,6 +130,7 @@ public class HttpVolley {
             e.printStackTrace();
         }
         if (bitmap!=null) {
+            imageView.setImageBitmap(null);
             imageView.setImageBitmap(bitmap);
             imageView.startAnimation(animation);
         }

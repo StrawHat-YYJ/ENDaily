@@ -98,6 +98,7 @@ public class NewsAdapter extends BaseAdapter{
                     if (news.getPicUrl()!=null&&!"".equals(news.getPicUrl())) {
                         //图片url不为空且不等于空字符串时才显示ImageView
                         viewHolder.imageview.setVisibility(View.VISIBLE);
+//                        viewHolder.imageview.setImageBitmap(null);
                         HttpVolley.setBitmap(context, news.getPicUrl(), viewHolder.imageview, animation);
                     }
                 }

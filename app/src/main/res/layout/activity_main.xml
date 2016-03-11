@@ -12,27 +12,28 @@
         android:paddingTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#209E85">
+        android:background="?attr/titleBackground">
         <TextView
             android:id="@+id/appNameTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:text="体育周刊"
-            android:textColor="#fff"/>
+            android:textColor="?attr/titleColor"/>
         <ImageView
             android:id="@+id/moreIv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:background="@mipmap/more"/>
+            android:src="@mipmap/more"
+            android:background="?attr/titleBackground"/>
     </RelativeLayout>
     <android.support.design.widget.TabLayout
         android:id="@+id/tablayout"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_below="@+id/title_total"
-        android:background="#209E85">
+        android:background="?attr/titleBackground">
     </android.support.design.widget.TabLayout>
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager"

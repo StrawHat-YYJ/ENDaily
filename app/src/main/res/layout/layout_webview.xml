@@ -4,21 +4,41 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
     <TextView
+        android:padding="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        android:background="#209E85"
         android:text="体育周刊"
-        android:textColor="#fff"/>
-    <TextView
-        android:id="@+id/webview_title"
+        android:textColor="?attr/titleColor"
+        android:background="?attr/titleBackground"/>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:textSize="15sp"
-        android:textColor="#fff"
-        android:singleLine="true"
-        android:background="#209E85"/>
+        android:background="?attr/titleBackground">
+        <ImageView
+            android:id="@+id/webview_backIv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:src="@mipmap/webview_back"
+            android:layout_gravity="center_vertical"/>
+        <TextView
+            android:id="@+id/webview_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textSize="15sp"
+            android:textColor="?attr/titleColor"
+            android:singleLine="true" />
+        <ImageView
+            android:id="@+id/webview_reload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/webview_reload"
+            android:layout_gravity="right"
+            android:layout_marginRight="5dp"/>
+    </LinearLayout>
+
     <WebView
         android:id="@+id/webview"
         android:layout_width="match_parent"
