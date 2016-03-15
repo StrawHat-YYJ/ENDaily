@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="15dp">
+    android:padding="15dp"
+    android:background="?attr/containerBackground">
     <ImageView
         android:id="@+id/social_jokeIv"
         android:layout_width="30dp"
@@ -13,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15sp"
-        android:textColor="#CFCFCF"
+        android:textColor="?attr/textColor"
         android:text="轻松一刻"
         android:layout_toRightOf="@+id/social_jokeIv"
         android:layout_alignBottom="@+id/social_jokeIv"

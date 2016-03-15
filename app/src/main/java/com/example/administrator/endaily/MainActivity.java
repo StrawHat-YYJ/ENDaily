@@ -35,10 +35,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public MoreFragment moreFragment;
     private long exitTime;
 
-    private ChangeTheme changeTheme = new ChangeTheme(MainActivity.this);
+    private static ChangeTheme changeTheme;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        changeTheme = new ChangeTheme(this);
         changeTheme.initTheme();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -122,15 +123,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onDestroy() {
         changeTheme.clearTheme();
         super.onDestroy();
-        File mfile=new File(HttpVolley.downloadDir);
-        File[] files =mfile.listFiles();
-        for (File file:files) {
-            file.delete();
-        }
-        mfile.delete();
+//        File mfile=new File(HttpVolley.downloadDir);
+//        File[] files =mfile.listFiles();
+//        for (File file:files) {
+//            file.delete();
+//        }
+//        mfile.delete();
     }
 
-    public void changeTheme(){
+    public static void changeTheme(){
         changeTheme.changeTheme();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 }

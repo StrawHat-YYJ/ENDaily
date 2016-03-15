@@ -7,7 +7,8 @@
     <com.yyj.ui.XListView
         android:id="@+id/xlistview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="?attr/containerBackground">
 
     </com.yyj.ui.XListView>
 

@@ -18,9 +18,9 @@
     <!-- 夜间模式 -->
     <style name="AppTheme.night" parent="AppTheme">
         <item name="titleBackground">@color/gray_dark</item>
-        <item name="containerBackground">@color/gray_light</item>
+        <item name="containerBackground">@color/green</item>
         <item name="titleColor">@color/white_dark</item>
-        <item name="textColor">@color/green_light</item>
+        <item name="textColor">@color/white_smoke</item>
     </style>
 
 </resources>

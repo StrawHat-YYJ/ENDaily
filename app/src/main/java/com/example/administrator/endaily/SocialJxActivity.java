@@ -26,9 +26,10 @@ public class SocialJxActivity extends Activity implements XListView.IXListViewLi
     private JokesAdapter jokesAdapter;
     //请求页数
     private int i=1;
-    private ChangeTheme changeTheme = new ChangeTheme(SocialJxActivity.this);
+    private static ChangeTheme changeTheme;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        changeTheme= new ChangeTheme(this);
         changeTheme.initTheme();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_social_joke);
@@ -96,7 +97,4 @@ public class SocialJxActivity extends Activity implements XListView.IXListViewLi
         super.onDestroy();
     }
 
-    public void changeTheme(){
-        changeTheme.changeTheme();
-    }
 }

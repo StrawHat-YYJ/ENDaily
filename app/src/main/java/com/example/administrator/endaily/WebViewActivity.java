@@ -20,9 +20,10 @@ public class WebViewActivity extends Activity{
     private WebView webView;
     private TextView titleTV;
     private ImageView backIv,reloadIv;
-    private ChangeTheme changeTheme= new ChangeTheme(WebViewActivity.this);
+    private static ChangeTheme changeTheme;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        changeTheme = new ChangeTheme(this);
         changeTheme.initTheme();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_webview);
@@ -95,7 +96,4 @@ public class WebViewActivity extends Activity{
         super.onDestroy();
     }
 
-    public void changeTheme(){
-        changeTheme.changeTheme();
-    }
 }

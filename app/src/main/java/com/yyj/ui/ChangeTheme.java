@@ -58,17 +58,19 @@ public class ChangeTheme {
      * wait a time until the onresume finish
      */
     public void recreateOnResume() {
-        new Handler().postDelayed(new Runnable() {
-            public void run() {
-                if (context instanceof MainActivity) {
-                    ((MainActivity) context).recreate();
-                }else if (context instanceof WebViewActivity) {
-                    ((WebViewActivity) context).recreate();
-                }else if (context instanceof SocialJxActivity) {
-                    ((SocialJxActivity) context).recreate();
+        if (context!=null) {
+            new Handler().postDelayed(new Runnable() {
+                public void run() {
+                    if (context instanceof MainActivity) {
+                        ((MainActivity) context).recreate();
+                    } else if (context instanceof WebViewActivity) {
+                        ((WebViewActivity) context).recreate();
+                    } else if (context instanceof SocialJxActivity) {
+                        ((SocialJxActivity) context).recreate();
+                    }
                 }
-            }
-        }, 100);
+            }, 100);
+        }
     }
     private void initNightView() {
         if (mIsAddedView == true)
@@ -83,13 +85,14 @@ public class ChangeTheme {
         mIsAddedView = true;
     }
 
-    public void changeTheme(){
-        Log.e("yyj","changeTheme mBaseApp = "+mBaseApp);
-        boolean isNight =mBaseApp.isNightMode();
-        if (isNight) {
-            changeToDay();
-        } else {
-            changeToNight();
+    public void changeTheme() {
+        if (mBaseApp!=null) {
+            boolean isNight = mBaseApp.isNightMode();
+            if (isNight) {
+                changeToDay();
+            } else {
+                changeToNight();
+            }
         }
         recreateOnResume();
     }

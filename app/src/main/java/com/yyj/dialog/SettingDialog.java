@@ -1,6 +1,7 @@
 package com.yyj.dialog;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 import com.example.administrator.endaily.BaseApplication;
 import com.example.administrator.endaily.MainActivity;
 import com.example.administrator.endaily.R;
+import com.example.administrator.endaily.SetActivity;
 import com.example.administrator.endaily.SocialJxActivity;
 import com.example.administrator.endaily.WebViewActivity;
 
@@ -26,17 +28,17 @@ import com.example.administrator.endaily.WebViewActivity;
  */
 public class SettingDialog extends DialogFragment{
     private Context context;
-    private TextView settingTv,themeSwapTv;
+    private TextView settingTv,themeChangeTv;
     private boolean isDayModel = true;
     private BaseApplication application = BaseApplication.getApplication();
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.layout_settingdialog,
                 container,false);
         settingTv= (TextView) view.findViewById(R.id.settingdialog_tv_set);
-        themeSwapTv= (TextView) view.findViewById(R.id.settingdialog_tv_about);
+        themeChangeTv= (TextView) view.findViewById(R.id.settingdialog_tv_about);
         getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
         final DisplayMetrics dm = new DisplayMetrics();
         final WindowManager.LayoutParams layoutParams = getDialog().getWindow().getAttributes();
@@ -44,21 +46,33 @@ public class SettingDialog extends DialogFragment{
         layoutParams.height =dm.heightPixels;
         layoutParams.gravity = Gravity.TOP|Gravity.RIGHT;
         getDialog().getWindow().setAttributes(layoutParams);
-        themeSwapTv.setOnClickListener(new View.OnClickListener() {
+        themeChangeTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 themeSwap();
+                getDialog().dismiss();
+            }
+        });
+        settingTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), SetActivity.class);
+                startActivity(intent);
+                getDialog().dismiss();
             }
         });
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        //设置Dialogfragment大小
+        getDialog().getWindow().setLayout(350,230);
+    }
+
     public void themeSwap() {
-        MainActivity mainActivity = new MainActivity();
-        WebViewActivity webViewActivity = new WebViewActivity();
-        SocialJxActivity socialJxActivity = new SocialJxActivity();
-        mainActivity.changeTheme();
-        webViewActivity.changeTheme();
-        socialJxActivity.changeTheme();
+        MainActivity.changeTheme();
     }
 }
