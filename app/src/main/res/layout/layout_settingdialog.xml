@@ -1,31 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:padding="5dp"
     android:orientation="vertical"
     android:background="?attr/containerBackground">
+
+    <ImageView
+        android:id="@+id/settingdialog_iv_theme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/theme" />
+
+
+    <TextView
+        android:id="@+id/settingdialog_tv_theme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="切换主题"
+        android:layout_toRightOf="@+id/settingdialog_iv_theme"
+        android:layout_marginTop="10dp"
+        android:layout_alignBottom="@+id/settingdialog_iv_theme"
+        android:padding="3dp"
+        android:textColor="?attr/textColor"/>
+    <ImageView
+        android:id="@+id/settingdialog_iv_set"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/settingdialog_iv_theme"
+        android:src="@mipmap/settingdialog_set"/>
     <TextView
         android:id="@+id/settingdialog_tv_set"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/settingdialog_iv_set"
+        android:layout_alignBottom="@+id/settingdialog_iv_set"
+        android:layout_alignLeft="@+id/settingdialog_tv_theme"
         android:textSize="18sp"
         android:text="设置"
         android:padding="3dp"
         android:textColor="?attr/textColor"/>
 
-    <!--<ImageView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="1dp"-->
-        <!--android:background="#9C9C9C"/>-->
-    <TextView
-        android:id="@+id/settingdialog_tv_about"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:text="切换主题"
-        android:layout_marginTop="10dp"
-        android:padding="3dp"
-        android:textColor="?attr/textColor"/>
 
-</LinearLayout>
+</RelativeLayout>

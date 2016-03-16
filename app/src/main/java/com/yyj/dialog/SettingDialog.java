@@ -38,7 +38,7 @@ public class SettingDialog extends DialogFragment{
         View view = inflater.inflate(R.layout.layout_settingdialog,
                 container,false);
         settingTv= (TextView) view.findViewById(R.id.settingdialog_tv_set);
-        themeChangeTv= (TextView) view.findViewById(R.id.settingdialog_tv_about);
+        themeChangeTv= (TextView) view.findViewById(R.id.settingdialog_tv_theme);
         getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
         final DisplayMetrics dm = new DisplayMetrics();
         final WindowManager.LayoutParams layoutParams = getDialog().getWindow().getAttributes();

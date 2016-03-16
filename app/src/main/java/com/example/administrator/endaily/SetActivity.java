@@ -3,6 +3,7 @@ package com.example.administrator.endaily;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +29,8 @@ public class SetActivity extends Activity implements View.OnClickListener{
 
     private void initView() {
         TextView clearCacheTv = (TextView) findViewById(R.id.setAty_clearCache);
+        LinearLayout layout = (LinearLayout) findViewById(R.id.setAty_clearCacheLayout);
+        layout.setOnClickListener(this);
         clearCacheTv.setOnClickListener(this);
     }
 
@@ -35,6 +38,7 @@ public class SetActivity extends Activity implements View.OnClickListener{
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.setAty_clearCache:
+            case R.id.setAty_clearCacheLayout:
                 File mfile=new File(HttpVolley.downloadDir);
                 try{
                     File[] files =mfile.listFiles();

@@ -13,7 +13,7 @@
         android:id="@+id/social_jokeTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
+        android:textSize="20sp"
         android:textColor="?attr/textColor"
         android:text="轻松一刻"
         android:layout_toRightOf="@+id/social_jokeIv"

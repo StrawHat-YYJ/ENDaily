@@ -66,7 +66,7 @@ public class HttpVolley {
         },new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(context,"网络开小差了 >.<",Toast.LENGTH_SHORT).show();
+                Toast.makeText(context,"请检查您的网络连接。",Toast.LENGTH_SHORT).show();
             }
         }){
             @Override

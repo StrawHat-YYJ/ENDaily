@@ -17,14 +17,13 @@
         android:background="?attr/titleBackground">
         <ImageView
             android:id="@+id/webview_backIv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:src="@mipmap/webview_back"
             android:layout_gravity="center_vertical"/>
         <TextView
             android:id="@+id/webview_title"
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:textSize="15sp"

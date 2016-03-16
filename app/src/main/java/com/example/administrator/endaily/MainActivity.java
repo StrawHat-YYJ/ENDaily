@@ -1,5 +1,6 @@
 package com.example.administrator.endaily;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.design.widget.TabLayout;
@@ -123,6 +124,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onDestroy() {
         changeTheme.clearTheme();
         super.onDestroy();
+        finishAll();
 //        File mfile=new File(HttpVolley.downloadDir);
 //        File[] files =mfile.listFiles();
 //        for (File file:files) {
@@ -138,5 +140,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onResume() {
         super.onResume();
+    }
+
+    public void finishAll() {
+        ArrayList<Activity> list = (ArrayList<Activity>) BaseApplication.getActivityList();
+        if (list!=null) {
+            for (Activity activity: list
+                    ) {
+                activity.finish();
+            }
+        }
     }
 }
