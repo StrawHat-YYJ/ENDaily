@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.Menu;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -16,7 +17,7 @@ import com.yyj.ui.ChangeTheme;
 /**
  * Created by 草帽儿 on 2016/2/18.
  */
-public class WebViewActivity extends Activity{
+public class WebViewActivity extends BaseActivity{
     private WebView webView;
     private TextView titleTV;
     private ImageView backIv,reloadIv;
@@ -81,12 +82,13 @@ public class WebViewActivity extends Activity{
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode==KeyEvent.KEYCODE_BACK&&webView!=null&&
-                webView.canGoBack()) {
-            webView.goBack();
-            return true;
+        if (keyCode==KeyEvent.KEYCODE_BACK) {
+            if (webView!=null&& webView.canGoBack()) {
+                webView.goBack();
+                return true;
+            }
+            finish();
         }
-        finish();
         return super.onKeyDown(keyCode, event);
     }
 
@@ -96,4 +98,9 @@ public class WebViewActivity extends Activity{
         super.onDestroy();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+         super.onCreateOptionsMenu(menu);
+        return true;
+    }
 }

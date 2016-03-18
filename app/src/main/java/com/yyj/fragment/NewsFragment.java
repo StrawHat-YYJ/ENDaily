@@ -6,19 +6,23 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
+import com.example.administrator.endaily.BaseApplication;
 import com.example.administrator.endaily.R;
 import com.example.administrator.endaily.WebViewActivity;
 import com.yyj.ConfigConstant.Api;
 import com.yyj.adapter.NewsAdapter;
 import com.yyj.bean.News;
+import com.yyj.dialog.LoadingDialog;
 import com.yyj.parse.BaseParse;
 import com.yyj.ui.XListView;
+import com.yyj.utils.cacheUtil.BaseSharePreferences;
 import com.yyj.utils.dateutil.DateUtils;
 import com.yyj.utils.netUtil.HttpVolley;
 
@@ -32,13 +36,16 @@ public class NewsFragment extends Fragment implements XListView.IXListViewListen
     private XListView mListView;
     private NewsAdapter newsAdapter;
     private Intent intent=new Intent();
+    private LoadingDialog dialog;
     private ArrayList<News.ShowapiResBodyEntity.NewslistEntity> list=new
             ArrayList<News.ShowapiResBodyEntity.NewslistEntity>();
     private int i=1;
+    private boolean isNoImage;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.layout_news,container,false);
+        dialog = LoadingDialog.getInstance();
         mListView = (XListView)view.findViewById(R.id.xlistview);
         mListView.setPullLoadEnable(true);
 //		mListView.setPullLoadEnable(false);
@@ -49,7 +56,7 @@ public class NewsFragment extends Fragment implements XListView.IXListViewListen
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 final News.ShowapiResBodyEntity.NewslistEntity news = list.get(position - 1);
                 String url = news.getUrl();
-                intent.setClass(getContext(),WebViewActivity.class);
+                intent.setClass(getContext(), WebViewActivity.class);
                 intent.putExtra("url", url);
                 intent.putExtra("title", news.getTitle());
                 startActivity(intent);
@@ -99,10 +106,25 @@ public class NewsFragment extends Fragment implements XListView.IXListViewListen
             if (mListView.getAdapter()!=null){
                 newsAdapter.notifyDataSetChanged();
             }else {
-                newsAdapter= new NewsAdapter(getActivity(),list);
+                isNoImage = BaseSharePreferences.getInstance().getNoImage();
+                newsAdapter= new NewsAdapter(getActivity(),list,isNoImage);
                 mListView.setAdapter(newsAdapter);
+                dialog.dismiss();
             }
 
         }
     };
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        isNoImage =BaseSharePreferences.getInstance().getNoImage();
+        //网络请求异步，adapter可能为空。
+        if (newsAdapter != null) {
+            newsAdapter.setIsNoImage(isNoImage);
+            newsAdapter.notifyDataSetChanged();
+        } else {
+            dialog.show(getFragmentManager(),"loadingDialog");
+        }
+    }
 }

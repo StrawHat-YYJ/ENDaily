@@ -6,42 +6,57 @@
     android:orientation="vertical"
     android:background="?attr/containerBackground">
 
-    <ImageView
-        android:id="@+id/settingdialog_iv_theme"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/settingdialog_themelayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@mipmap/theme" />
+        android:layout_marginBottom="5dp">
+        <ImageView
+            android:id="@+id/settingdialog_iv_theme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/theme" />
 
 
-    <TextView
-        android:id="@+id/settingdialog_tv_theme"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/settingdialog_tv_theme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="切换主题"
+            android:layout_toRightOf="@+id/settingdialog_iv_theme"
+            android:layout_marginTop="10dp"
+            android:layout_alignBottom="@+id/settingdialog_iv_theme"
+            android:padding="3dp"
+            android:textColor="?attr/textColor"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/settingdialog_setlayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:text="切换主题"
-        android:layout_toRightOf="@+id/settingdialog_iv_theme"
-        android:layout_marginTop="10dp"
-        android:layout_alignBottom="@+id/settingdialog_iv_theme"
-        android:padding="3dp"
-        android:textColor="?attr/textColor"/>
-    <ImageView
-        android:id="@+id/settingdialog_iv_set"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_below="@+id/settingdialog_iv_theme"
-        android:src="@mipmap/settingdialog_set"/>
-    <TextView
-        android:id="@+id/settingdialog_tv_set"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/settingdialog_iv_set"
-        android:layout_alignBottom="@+id/settingdialog_iv_set"
-        android:layout_alignLeft="@+id/settingdialog_tv_theme"
-        android:textSize="18sp"
-        android:text="设置"
-        android:padding="3dp"
-        android:textColor="?attr/textColor"/>
+        android:layout_below="@+id/settingdialog_themelayout">
+        <ImageView
+            android:id="@+id/settingdialog_iv_set"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/settingdialog_iv_theme"
+            android:src="@mipmap/settingdialog_set"/>
+        <TextView
+            android:id="@+id/settingdialog_tv_set"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/settingdialog_iv_set"
+            android:layout_alignBottom="@+id/settingdialog_iv_set"
+            android:layout_alignLeft="@+id/settingdialog_tv_theme"
+            android:textSize="18sp"
+            android:text="设置"
+            android:padding="3dp"
+            android:textColor="?attr/textColor"/>
+    </LinearLayout>
+
+
 
 
 </RelativeLayout>

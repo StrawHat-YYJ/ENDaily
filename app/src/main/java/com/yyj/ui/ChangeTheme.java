@@ -14,6 +14,7 @@ import com.example.administrator.endaily.MainActivity;
 import com.example.administrator.endaily.R;
 import com.example.administrator.endaily.SocialJxActivity;
 import com.example.administrator.endaily.WebViewActivity;
+import com.yyj.utils.cacheUtil.BaseSharePreferences;
 
 /**
  * Created by 草帽儿 on 2016/3/11.
@@ -25,6 +26,7 @@ public class ChangeTheme {
     private View mNightView = null;
     private ViewGroup.LayoutParams mNightViewParam;
     private boolean mIsAddedView;
+    private BaseSharePreferences baseSharePreferences;
 
     public ChangeTheme(Context context){
         this.context= context;
@@ -32,10 +34,11 @@ public class ChangeTheme {
 
     public void initTheme() {
         if (context instanceof Activity) {
-            mBaseApp =(BaseApplication)(((Activity) context).getApplication());
-            Log.e("yyj","init mBaseApp = "+mBaseApp);
+//            mBaseApp =(BaseApplication)(((Activity) context).getApplication());
+            mBaseApp= BaseApplication.getApplication();
         }
-        if (mBaseApp.isNightMode()) {
+        baseSharePreferences = BaseSharePreferences.getInstance();
+        if (baseSharePreferences.getNightMode()) {
             context.setTheme(R.style.AppTheme_night);
             initNightView();
             mNightView.setBackgroundResource(R.color.night_mask);
@@ -46,11 +49,13 @@ public class ChangeTheme {
     }
 
     public void changeToDay() {
-        mBaseApp.setIsNightMode(false);
+//        mBaseApp.setIsNightMode(false);
+        baseSharePreferences.setNightMode(false);
         mNightView.setBackgroundResource(android.R.color.transparent);
     }
     public void changeToNight() {
-        mBaseApp.setIsNightMode(true);
+//        mBaseApp.setIsNightMode(true);
+        baseSharePreferences.setNightMode(true);
         initNightView();
         mNightView.setBackgroundResource(R.color.night_mask);
     }
@@ -86,8 +91,8 @@ public class ChangeTheme {
     }
 
     public void changeTheme() {
-        if (mBaseApp!=null) {
-            boolean isNight = mBaseApp.isNightMode();
+        if (baseSharePreferences!=null) {
+            boolean isNight =baseSharePreferences.getNightMode();
             if (isNight) {
                 changeToDay();
             } else {

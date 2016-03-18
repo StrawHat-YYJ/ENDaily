@@ -1,6 +1,7 @@
 package com.yyj.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
@@ -9,6 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.administrator.endaily.BaseApplication;
 import com.example.administrator.endaily.R;
 import com.yyj.ConfigConstant.NewsItemType;
 import com.yyj.bean.News;
@@ -24,13 +26,26 @@ public class NewsAdapter extends BaseAdapter{
     private Context context;
     private int itemTypeCount=2;
     private Animation animation;
+    //是否为无图模式，默认为否。
+    private boolean isNoImage;
     public NewsAdapter(Context context,
-                       ArrayList<News.ShowapiResBodyEntity.NewslistEntity>list){
+                       ArrayList<News.ShowapiResBodyEntity.NewslistEntity>list,
+                       boolean isNoImage){
         this.context=context;
         this.list=list;
+        this.isNoImage = isNoImage;
         animation=new AlphaAnimation(0.0f,1.0f);
         animation.setDuration(300);
     }
+
+    public boolean isNoImage() {
+        return isNoImage;
+    }
+
+    public void setIsNoImage(boolean isNoImage) {
+        this.isNoImage = isNoImage;
+    }
+
     @Override
     public int getCount() {
 
@@ -95,13 +110,20 @@ public class NewsAdapter extends BaseAdapter{
                     viewHolder.ctime.setText(news.getCtime());
                     viewHolder.description.setText(news.getDescription());
 //                viewHolder.imageview.setImageBitmap(null);
-                    if (news.getPicUrl()!=null&&!"".equals(news.getPicUrl())) {
-                        //图片url不为空且不等于空字符串时才显示ImageView
-                        viewHolder.imageview.setVisibility(View.VISIBLE);
+                    if (!isNoImage) {
+                        //非无图模式下
+                        if (news.getPicUrl() != null && !"".equals(news.getPicUrl())) {
+                            //图片url不为空且不等于空字符串时才显示ImageView
+                            viewHolder.imageview.setVisibility(View.VISIBLE);
 //                        viewHolder.imageview.setImageBitmap(null);
-                        HttpVolley.setBitmap(context, news.getPicUrl(), viewHolder.imageview, animation);
+                            HttpVolley.setBitmap(context, news.getPicUrl(), viewHolder.imageview, animation);
+                        }
+                    } else {
+                        //无图模式
+                        viewHolder.imageview.setVisibility(View.GONE);
                     }
                 }
+                break;
         }
         return convertView;
     }

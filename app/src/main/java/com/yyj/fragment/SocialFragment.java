@@ -25,20 +25,20 @@ public class SocialFragment extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.layout_social,container,false);
+        LinearLayout layout = (LinearLayout) view.findViewById(R.id.social_jokeLayout);
         jokeIv= (ImageView) view.findViewById(R.id.social_jokeIv);
         jokeTv= (TextView) view.findViewById(R.id.social_jokeTv);
-        jokeTv.setOnClickListener(this);
-        jokeIv.setOnClickListener(this);
+        layout.setOnClickListener(this);
         return view;
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.social_jokeTv:
-            case R.id.social_jokeIv:
+            case R.id.social_jokeLayout:
                 intent.setClass(getContext(), SocialJxActivity.class);
                 startActivity(intent);
+                break;
         }
     }
 }

@@ -13,10 +13,12 @@ public class BaseApplication extends Application{
     private static BaseApplication application;
     private boolean isNightMode;
     public static List<Activity> activityList = new ArrayList<Activity>();
+    private boolean isNoImage;
 
     @Override
     public void onCreate() {
         super.onCreate();
+        application = this;
         setIsNightMode(false);
     }
 
@@ -45,5 +47,13 @@ public class BaseApplication extends Application{
 
     public static void setActivityList(List<Activity> activityList) {
         BaseApplication.activityList = activityList;
+    }
+
+    public boolean isNoImage() {
+        return isNoImage;
+    }
+
+    public void setIsNoImage(boolean isNoImage) {
+        this.isNoImage = isNoImage;
     }
 }

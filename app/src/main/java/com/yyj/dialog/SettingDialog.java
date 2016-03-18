@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.administrator.endaily.BaseApplication;
@@ -26,19 +27,16 @@ import com.example.administrator.endaily.WebViewActivity;
 /**
  * Created by 草帽儿 on 2016/1/23.
  */
-public class SettingDialog extends DialogFragment{
-    private Context context;
+public class SettingDialog extends DialogFragment implements View.OnClickListener{
     private TextView settingTv,themeChangeTv;
-    private boolean isDayModel = true;
-    private BaseApplication application = BaseApplication.getApplication();
 
     @Nullable
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.layout_settingdialog,
                 container,false);
-        settingTv= (TextView) view.findViewById(R.id.settingdialog_tv_set);
-        themeChangeTv= (TextView) view.findViewById(R.id.settingdialog_tv_theme);
+        LinearLayout themeLayout = (LinearLayout) view.findViewById(R.id.settingdialog_themelayout);
+        LinearLayout setLayout = (LinearLayout) view.findViewById(R.id.settingdialog_setlayout);
         getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
         final DisplayMetrics dm = new DisplayMetrics();
         final WindowManager.LayoutParams layoutParams = getDialog().getWindow().getAttributes();
@@ -46,22 +44,8 @@ public class SettingDialog extends DialogFragment{
         layoutParams.height =dm.heightPixels;
         layoutParams.gravity = Gravity.TOP|Gravity.RIGHT;
         getDialog().getWindow().setAttributes(layoutParams);
-        themeChangeTv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                themeSwap();
-                getDialog().dismiss();
-            }
-        });
-        settingTv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(getActivity(), SetActivity.class);
-                startActivity(intent);
-                getDialog().dismiss();
-            }
-        });
+        themeLayout.setOnClickListener(this);
+        setLayout.setOnClickListener(this);
         return view;
     }
 
@@ -74,5 +58,21 @@ public class SettingDialog extends DialogFragment{
 
     public void themeSwap() {
         MainActivity.changeTheme();
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.settingdialog_themelayout:
+                themeSwap();
+                getDialog().dismiss();
+                break;
+            case R.id.settingdialog_setlayout:
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), SetActivity.class);
+                startActivity(intent);
+                getDialog().dismiss();
+                break;
+        }
     }
 }

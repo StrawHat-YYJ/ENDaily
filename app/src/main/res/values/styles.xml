@@ -14,6 +14,8 @@
         <item name="containerBackground">@color/white_dark</item>
         <item name="titleColor">@color/white</item>
         <item name="textColor">@color/gray</item>
+        <item name="hintBackground">@color/green_light</item>
+        <item name="hintTextColor">@color/green_light</item>
     </style>
     <!-- 夜间模式 -->
     <style name="AppTheme.night" parent="AppTheme">
@@ -21,6 +23,8 @@
         <item name="containerBackground">@color/green</item>
         <item name="titleColor">@color/white_dark</item>
         <item name="textColor">@color/white_smoke</item>
+        <item name="hintBackground">@color/gray</item>
+        <item name="hintTextColor">@color/white_dark</item>
     </style>
 
 </resources>

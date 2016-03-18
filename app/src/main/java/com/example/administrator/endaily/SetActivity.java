@@ -16,8 +16,9 @@ import java.io.FileNotFoundException;
 /**
  * Created by 草帽儿 on 2016/3/15.
  */
-public class SetActivity extends Activity implements View.OnClickListener{
+public class SetActivity extends BaseActivity implements View.OnClickListener{
     private static ChangeTheme changeTheme;
+    private boolean isNoImage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         changeTheme = new ChangeTheme(this);
@@ -32,6 +33,8 @@ public class SetActivity extends Activity implements View.OnClickListener{
         LinearLayout layout = (LinearLayout) findViewById(R.id.setAty_clearCacheLayout);
         layout.setOnClickListener(this);
         clearCacheTv.setOnClickListener(this);
+        LinearLayout noImage = (LinearLayout) findViewById(R.id.setAty_noImageLayout);
+        noImage.setOnClickListener(this);
     }
 
     @Override
@@ -51,6 +54,19 @@ public class SetActivity extends Activity implements View.OnClickListener{
                     Toast.makeText(this,"当前缓存已被清空。",Toast.LENGTH_SHORT).show();
                 }
 
+                break;
+            case R.id.setAty_noImageLayout:
+                isNoImage=sharePreferences.getNoImage();
+                //开启无图模式，只针对首页新闻
+                if (isNoImage == false) {
+//                    BaseApplication.getApplication().setIsNoImage(true);
+                    sharePreferences.setNoImage(true);
+                    Toast.makeText(this, "开启无图浏览模式。", Toast.LENGTH_SHORT).show();
+                } else {
+//                    BaseApplication.getApplication().setIsNoImage(false);
+                    sharePreferences.setNoImage(false);
+                    Toast.makeText(this,"关闭无图浏览模式。",Toast.LENGTH_SHORT).show();
+                }
                 break;
         }
     }

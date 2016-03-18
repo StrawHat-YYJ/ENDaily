@@ -1,12 +1,17 @@
 package com.example.administrator.endaily;
 
 import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+
 import com.yyj.ConfigConstant.Api;
 import com.yyj.adapter.JokesAdapter;
 import com.yyj.bean.Jokes;
+import com.yyj.dialog.LoadingDialog;
 import com.yyj.parse.BaseParse;
 import com.yyj.ui.ChangeTheme;
 import com.yyj.ui.XListView;
@@ -19,7 +24,7 @@ import java.util.ArrayList;
  * Created by 草帽儿 on 2016/2/22.
  * 社交——精选
  */
-public class SocialJxActivity extends Activity implements XListView.IXListViewListener{
+public class SocialJxActivity extends BaseActivity implements XListView.IXListViewListener{
     private XListView mxListView;
     private ArrayList<Jokes.ShowapiResBodyEntity.ContentlistEntity> list=
             new ArrayList<Jokes.ShowapiResBodyEntity.ContentlistEntity>();
@@ -27,12 +32,14 @@ public class SocialJxActivity extends Activity implements XListView.IXListViewLi
     //请求页数
     private int i=1;
     private static ChangeTheme changeTheme;
+    private LoadingDialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         changeTheme= new ChangeTheme(this);
         changeTheme.initTheme();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_social_joke);
+        dialog = LoadingDialog.getInstance();
         mxListView= (XListView) findViewById(R.id.social_joke_xlistview);
         mxListView.setPullLoadEnable(true);
 //		mxListView.setPullLoadEnable(false);
@@ -87,6 +94,7 @@ public class SocialJxActivity extends Activity implements XListView.IXListViewLi
             }else {
                 jokesAdapter=new JokesAdapter(SocialJxActivity.this,list);
                 mxListView.setAdapter(jokesAdapter);
+                dialog.dismiss();
             }
         }
     };
@@ -97,4 +105,12 @@ public class SocialJxActivity extends Activity implements XListView.IXListViewLi
         super.onDestroy();
     }
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (jokesAdapter==null) {
+            dialog.show(getSupportFragmentManager(),"");
+        }
+    }
 }
