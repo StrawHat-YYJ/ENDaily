@@ -19,6 +19,7 @@ import com.example.administrator.endaily.WebViewActivity;
 import com.yyj.ConfigConstant.Api;
 import com.yyj.adapter.NewsAdapter;
 import com.yyj.bean.News;
+import com.yyj.dialog.ItemDialog;
 import com.yyj.dialog.LoadingDialog;
 import com.yyj.parse.BaseParse;
 import com.yyj.ui.XListView;
@@ -60,6 +61,14 @@ public class NewsFragment extends Fragment implements XListView.IXListViewListen
                 intent.putExtra("url", url);
                 intent.putExtra("title", news.getTitle());
                 startActivity(intent);
+            }
+        });
+        mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                News.ShowapiResBodyEntity.NewslistEntity news = list.get(position-1);
+                ItemDialog.getInstance(news).show(getFragmentManager(),"itemDialog");
+                return true;
             }
         });
         HttpVolley.getData(getActivity(), Api.url_news, Api.numsPerPage, "" + i, handler);

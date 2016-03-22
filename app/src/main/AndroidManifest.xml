@@ -21,6 +21,7 @@
         </activity>
         <activity android:name=".SocialJxActivity"></activity>
         <activity android:name=".SetActivity"></activity>
+        <activity android:name=".CollectActivity"></activity>
     </application>
     <!-- 应用所需要的权限-->
     <uses-permission android:name="android.permission.INTERNET"/>

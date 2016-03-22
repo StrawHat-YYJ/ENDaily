@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/containerBackground">
+
+    <TextView
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textSize="20sp"
+        android:textColor="?attr/titleColor"
+        android:background="?attr/titleBackground"
+        android:text="我的收藏"/>
+
+    <com.yyj.ui.XListView
+        android:id="@+id/collect_listView"
+        android:background="?attr/containerBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></com.yyj.ui.XListView>
+
+
+</LinearLayout>

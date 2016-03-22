@@ -2,22 +2,49 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
     android:background="?attr/containerBackground">
-
-    <ImageView
-        android:id="@+id/more_setting_iv"
-        android:layout_width="30dip"
-        android:layout_height="30dip"
-        android:src="@mipmap/set"/>
-    <TextView
-        android:id="@+id/more_setting_tv"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/more_settting_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/more_setting_iv"
-        android:text="设置"
-        android:textSize="20sp"
-        android:textColor="?attr/textColor"/>
+        android:padding="5dp">
+        <ImageView
+            android:layout_width="30dip"
+            android:layout_height="30dip"
+            android:src="@mipmap/set"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="设置"
+            android:textSize="20sp"
+            android:textColor="?attr/textColor"/>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/more_tv1"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_below="@+id/more_settting_layout"
+        android:background="?attr/hintBackground"/>
+    <LinearLayout
+        android:id="@+id/more_setting_collect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:layout_below="@+id/more_tv1">
+        <ImageView
+            android:layout_width="30dip"
+            android:layout_height="30dip"
+            android:src="@mipmap/more_collect"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="收藏"
+            android:textSize="20sp"
+            android:textColor="?attr/textColor"/>
+    </LinearLayout>
+
+
 
 </RelativeLayout>

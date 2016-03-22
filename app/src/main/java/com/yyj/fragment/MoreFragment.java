@@ -8,8 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.administrator.endaily.CollectActivity;
 import com.example.administrator.endaily.R;
 import com.example.administrator.endaily.SetActivity;
 
@@ -21,20 +23,24 @@ public class MoreFragment extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.layout_more,container,false);
-        ImageView moreSetIv = (ImageView) view.findViewById(R.id.more_setting_iv);
-        TextView moreSetTv = (TextView) view.findViewById(R.id.more_setting_tv);
-        moreSetIv.setOnClickListener(this);
-        moreSetTv.setOnClickListener(this);
+        LinearLayout setLayout = (LinearLayout) view.findViewById(R.id.more_settting_layout);
+        LinearLayout collectLayout= (LinearLayout) view.findViewById(R.id.more_setting_collect);
+        setLayout.setOnClickListener(this);
+        collectLayout.setOnClickListener(this);
         return view;
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.more_setting_iv:
-            case R.id.more_setting_tv:
+            case R.id.more_settting_layout:
                 Intent intent = new Intent(getActivity(), SetActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.more_setting_collect:
+                Intent intent1 = new Intent(getActivity(), CollectActivity.class);
+                startActivity(intent1);
+                break;
         }
     }
 }
