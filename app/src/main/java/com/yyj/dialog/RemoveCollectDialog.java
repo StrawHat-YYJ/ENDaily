@@ -13,6 +13,7 @@ import com.yyj.DataBase.MyDataBase;
 import com.yyj.adapter.NewsAdapter;
 import com.yyj.bean.News;
 import com.yyj.ui.XListView;
+import com.yyj.ui.XListViewFooter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +43,9 @@ public class RemoveCollectDialog extends DialogFragment{
                 adapter= new NewsAdapter(getActivity(),
                         (ArrayList<News.ShowapiResBodyEntity.NewslistEntity>) list,isNoImage);
                 mListView.setAdapter(adapter);
+                if (list.size()==0) {
+                    XListViewFooter.mHintView.setText("您还未添加任何收藏");
+                }
                 dialog.dismiss();
             }
         });

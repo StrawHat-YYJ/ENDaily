@@ -13,6 +13,7 @@ import com.yyj.dialog.ItemDialog;
 import com.yyj.dialog.RemoveCollectDialog;
 import com.yyj.ui.ChangeTheme;
 import com.yyj.ui.XListView;
+import com.yyj.ui.XListViewFooter;
 import com.yyj.utils.cacheUtil.BaseSharePreferences;
 import com.yyj.utils.dateutil.DateUtils;
 
@@ -43,6 +44,11 @@ public class CollectActivity extends BaseActivity implements XListView.IXListVie
         mListView.setXListViewListener(this);
         list = MyDataBase.getInstance().queryall();
         adapter = new NewsAdapter(this, (ArrayList<News.ShowapiResBodyEntity.NewslistEntity>) list,isNoImage);
+        if (list.size()==0) {
+            XListViewFooter.mHintView.setText("您还未添加任何收藏");
+        } else {
+            XListViewFooter.mHintView.setText("查看更多");
+        }
         mListView.setAdapter(adapter);
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -97,6 +103,9 @@ public class CollectActivity extends BaseActivity implements XListView.IXListVie
             mListView.setAdapter(adapter);
         }
         onLoad();
+        if (list.size()==0) {
+            XListViewFooter.mHintView.setText("您还未添加任何收藏");
+        }
     }
 
 }

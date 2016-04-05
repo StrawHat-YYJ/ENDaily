@@ -24,7 +24,7 @@ public class XListViewFooter extends LinearLayout {
 
 	private View mContentView;
 	private View mProgressBar;
-	private TextView mHintView;
+	public static TextView mHintView;
 	
 	public XListViewFooter(Context context) {
 		super(context);

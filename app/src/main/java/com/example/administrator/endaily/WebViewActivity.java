@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.yyj.dialog.LoadingDialog;
 import com.yyj.ui.ChangeTheme;
 
 /**
@@ -24,10 +25,10 @@ import com.yyj.ui.ChangeTheme;
  */
 public class WebViewActivity extends BaseActivity{
     private WebView webView;
-    private TextView titleTV;
-    private ImageView backIv,reloadIv;
+//    private TextView titleTV;
+//    private ImageView backIv,reloadIv;
     private static ChangeTheme changeTheme;
-    private ProgressDialog progressDialog=null;
+    private LoadingDialog progressDialog=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         changeTheme = new ChangeTheme(this);
@@ -38,34 +39,34 @@ public class WebViewActivity extends BaseActivity{
         final String url = intent.getStringExtra("url");
         String title = intent.getStringExtra("title");
         webView = (WebView) findViewById(R.id.webview);
-        titleTV = (TextView) findViewById(R.id.webview_title);
-        backIv = (ImageView) findViewById(R.id.webview_backIv);
-        reloadIv = (ImageView) findViewById(R.id.webview_reload);
-        backIv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (webView != null && webView.canGoBack()) {
-                    webView.goBack();
-                    return;
-                }
-                finish();
-            }
-        });
-        reloadIv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (webView != null && url != null) {
-                    webView.reload();
-                }
-            }
-        });
-        if (title!=null) {
-            titleTV.setText(title);
-        }
+//        titleTV = (TextView) findViewById(R.id.webview_title);
+//        backIv = (ImageView) findViewById(R.id.webview_backIv);
+//        reloadIv = (ImageView) findViewById(R.id.webview_reload);
+//        backIv.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (webView != null && webView.canGoBack()) {
+//                    webView.goBack();
+//                    return;
+//                }
+//                finish();
+//            }
+//        });
+//        reloadIv.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (webView != null && url != null) {
+//                    webView.reload();
+//                }
+//            }
+//        });
+//        if (title!=null) {
+//            titleTV.setText(title);
+//        }
         webView.setWebViewClient(new MyWebViewClient());
         webView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
         WebSettings webSettings = webView.getSettings();
-//        webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);//不使用缓存
+        webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);//不使用缓存
         webSettings.setAllowFileAccess(true);// 若html是一个文件框的话,就可以浏览本地文件
         webSettings.setBuiltInZoomControls(true);
         webSettings.setDatabaseEnabled(true);
@@ -80,7 +81,7 @@ public class WebViewActivity extends BaseActivity{
         if (url != null) {
                 webView.loadUrl(url);
         } else {
-            titleTV.setText("相关搜索");
+//            titleTV.setText("相关搜索");
             String connectedUrl = "http://wap.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&ch=&tn=baiduerr&bar=&wd=";
             String keyWords = getIntent().getStringExtra("Connected");
             if (keyWords!=null) {
@@ -119,9 +120,8 @@ public class WebViewActivity extends BaseActivity{
         @Override
         public void onPageStarted(WebView view, String url,Bitmap favicon) {//网页页面开始加载的时候
             if (progressDialog == null) {
-                progressDialog=new ProgressDialog(WebViewActivity.this);
-                progressDialog.setMessage("数据加载中，请稍后。。。");
-                progressDialog.show();
+                progressDialog=LoadingDialog.getInstance();
+                progressDialog.show(getSupportFragmentManager(),"LoadingDialog");
                 webView.setEnabled(false);// 当加载网页的时候将网页进行隐藏
             }
             super.onPageStarted(view, url,favicon);
@@ -129,7 +129,7 @@ public class WebViewActivity extends BaseActivity{
         @Override
         public void onPageFinished(WebView view, String url) {//网页加载结束的时候
             //super.onPageFinished(view, url);
-            if (progressDialog != null && progressDialog.isShowing()) {
+            if (progressDialog != null && !progressDialog.isHidden()) {
                 progressDialog.dismiss();
                 progressDialog = null;
                 webView.setEnabled(true);
