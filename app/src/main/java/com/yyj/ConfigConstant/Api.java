@@ -9,4 +9,6 @@ public class Api {
     public static String appid="15861";
     public static String secret="ba04ad049f5c4631bac4bd2d0f3dd5f3";
     public static String numsPerPage="10";
+    public static String nba="http://inba.ifeng.com/";
+    public static String url_AllNews="https://route.showapi.com/109-35?";
 }

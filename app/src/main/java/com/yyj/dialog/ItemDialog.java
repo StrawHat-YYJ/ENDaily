@@ -1,5 +1,6 @@
 package com.yyj.dialog;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.administrator.endaily.R;
+import com.example.administrator.endaily.WebViewActivity;
 import com.yyj.DataBase.MyDataBase;
 import com.yyj.bean.News;
 
@@ -55,6 +57,10 @@ public class ItemDialog extends DialogFragment implements View.OnClickListener{
                 itemDialog.dismiss();
                 break;
             case R.id.itemdialog_reply:
+                String title = news.getTitle();
+                Intent intent = new Intent(getContext(), WebViewActivity.class);
+                intent.putExtra("Connected",title);
+                startActivity(intent);
                 itemDialog.dismiss();
                 break;
         }

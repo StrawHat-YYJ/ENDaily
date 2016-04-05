@@ -10,7 +10,7 @@
 
     <!-- 日间模式 -->
     <style name="AppTheme.day" parent="AppTheme">
-        <item name="titleBackground">@color/green_grass</item>
+        <item name="titleBackground">@color/red_light</item>
         <item name="containerBackground">@color/white_dark</item>
         <item name="titleColor">@color/white</item>
         <item name="textColor">@color/gray</item>

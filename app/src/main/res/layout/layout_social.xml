@@ -24,5 +24,27 @@
             android:layout_alignBottom="@+id/social_jokeIv"
             android:layout_marginLeft="10dp"/>
     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/social_NBALayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/social_jokeLayout"
+        android:layout_marginTop="10dp">
+        <ImageView
+            android:id="@+id/social_nbaIv"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@mipmap/nba"/>
+        <TextView
+            android:id="@+id/social_nbaTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="?attr/textColor"
+            android:text="NBA专场"
+            android:layout_toRightOf="@+id/social_jokeIv"
+            android:layout_alignBottom="@+id/social_jokeIv"
+            android:layout_marginLeft="10dp"/>
+    </LinearLayout>
 
 </RelativeLayout>

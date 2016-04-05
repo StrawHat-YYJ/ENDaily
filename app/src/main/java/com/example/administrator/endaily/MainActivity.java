@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tabLayout.setTabTextColors(Color.rgb(181, 181, 181),
                 Color.rgb(255, 255, 255));
         tabLayout.setSelectedTabIndicatorHeight(3);
-        tabLayout.setSelectedTabIndicatorColor(Color.YELLOW);
+        tabLayout.setSelectedTabIndicatorColor(Color.WHITE);
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setTabsFromPagerAdapter(fragmentPagerAdapter);
     }

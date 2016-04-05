@@ -2,6 +2,7 @@ package com.yyj.utils.FileUtil;
 
 import android.content.Context;
 import android.os.Environment;
+import android.os.StatFs;
 
 import java.io.File;
 
@@ -46,6 +47,22 @@ public static String getAppCacheDir(Context context) {
     public static File getExternalCacheDir(Context context) {
         // 这个sd卡中文件路径下的内容会随着，程序卸载或者设置中清除缓存后一起清空
         return new File(Environment.getExternalStorageDirectory().getPath() );
+    }
+
+    /**
+     * 获取文件路径空间大小
+     * @param path
+     * @return
+     */
+    public static long getUsableSpace(File path) {
+        try{
+            final StatFs stats = new StatFs(path.getPath());
+            return (long) stats.getBlockSize() * (long) stats.getAvailableBlocks();
+        }catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+        }
+
     }
 
 }

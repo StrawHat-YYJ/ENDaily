@@ -72,6 +72,10 @@ public class HttpVolley {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> map = new HashMap<String,String>();
+                map.put("channelId","");
+                map.put("channelName","");
+                map.put("needContent","");
+                map.put("needHtml","");
                 map.put("maxResult",num);
                 map.put("num", num);
                 map.put("page", page);
