@@ -45,10 +45,11 @@
         android:layout_marginTop="10dp"
         android:orientation="horizontal">
         <ImageView
+            android:id="@+id/setAty_noImageIv"
             android:layout_width="30dip"
             android:layout_height="30dip"
             android:layout_marginLeft="5dp"
-            android:src="@mipmap/noimage"/>
+            android:src="@mipmap/noimage_on"/>
         <TextView
             android:id="@+id/setAty_noImageTv"
             android:layout_width="wrap_content"
