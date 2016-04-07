@@ -63,8 +63,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         viewContainer.add(socialFragment);
         viewContainer.add(moreFragment);
         //tablayout添加标签
-        titleContainer.add("新闻");
-        titleContainer.add("社区");
+        titleContainer.add("推荐");
+        titleContainer.add("分类");
         titleContainer.add("更多");
     }
     /**

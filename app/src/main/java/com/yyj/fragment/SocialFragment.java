@@ -33,6 +33,10 @@ public class SocialFragment extends Fragment implements View.OnClickListener{
         layout.setOnClickListener(this);
         LinearLayout nbaLayout = (LinearLayout) view.findViewById(R.id.social_NBALayout);
         nbaLayout.setOnClickListener(this);
+        LinearLayout soccer_ChinaLayout = (LinearLayout) view.findViewById(R.id.social_soccerChinaLayout);
+        soccer_ChinaLayout.setOnClickListener(this);
+        LinearLayout soccer_EULayout = (LinearLayout) view.findViewById(R.id.social_soccerEULayout);
+        soccer_EULayout.setOnClickListener(this);
         return view;
     }
 
@@ -47,6 +51,18 @@ public class SocialFragment extends Fragment implements View.OnClickListener{
                 intent.setClass(getContext(), WebViewActivity.class);
                 intent.putExtra("url", Api.nba);
                 intent.putExtra("title","NBA资讯");
+                startActivity(intent);
+                break;
+            case R.id.social_soccerChinaLayout:
+                intent.setClass(getContext(),WebViewActivity.class);
+                intent.putExtra("url",Api.soccer_china);
+                intent.putExtra("title","中超联赛");
+                startActivity(intent);
+                break;
+            case R.id.social_soccerEULayout:
+                intent.setClass(getContext(),WebViewActivity.class);
+                intent.putExtra("url",Api.soccer_EU);
+                intent.putExtra("title","欧冠联赛");
                 startActivity(intent);
                 break;
         }

@@ -47,4 +47,49 @@
             android:layout_marginLeft="10dp"/>
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/social_soccerEULayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/social_NBALayout"
+        android:layout_marginTop="10dp">
+        <ImageView
+            android:id="@+id/social_soccerEUIv"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@mipmap/ouguan"/>
+        <TextView
+            android:id="@+id/social_soccerEUTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="?attr/textColor"
+            android:text="欧冠联赛"
+            android:layout_toRightOf="@+id/social_jokeIv"
+            android:layout_alignBottom="@+id/social_jokeIv"
+            android:layout_marginLeft="10dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/social_soccerChinaLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/social_soccerEULayout"
+        android:layout_marginTop="10dp">
+        <ImageView
+            android:id="@+id/social_soccerChinaIv"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@mipmap/soccer_china"/>
+        <TextView
+            android:id="@+id/social_soccerChinaTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="?attr/textColor"
+            android:text="中超联赛"
+            android:layout_toRightOf="@+id/social_jokeIv"
+            android:layout_alignBottom="@+id/social_jokeIv"
+            android:layout_marginLeft="10dp"/>
+    </LinearLayout>
+
 </RelativeLayout>

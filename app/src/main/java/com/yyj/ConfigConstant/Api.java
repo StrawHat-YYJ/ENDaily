@@ -11,4 +11,6 @@ public class Api {
     public static String numsPerPage="10";
     public static String nba="http://inba.ifeng.com/";
     public static String url_AllNews="https://route.showapi.com/109-35?";
+    public static String soccer_china="http://i.ifeng.com//sports/sportszhti/gnzq/csl2015/csl2015";
+    public static String soccer_EU= "http://sports.sina.cn/championsleague/index.d.html?vt=4&pos=10";
 }
