@@ -17,4 +17,10 @@ public class BaseParse {
         Object o = gson.fromJson(json, obj.getClass());
         return o;
     }
+
+    public static <T> T parse1(String json,T t){
+        Gson gson = new Gson();
+        T o  = (T) gson.fromJson(json,t.getClass());
+        return o;
+    }
 }

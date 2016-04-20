@@ -85,7 +85,7 @@ public class SocialJxActivity extends BaseActivity implements XListView.IXListVi
         @Override
         public void handleMessage(Message msg) {
            String jokes=(String)msg.obj;
-            Jokes jokes1= (Jokes)BaseParse.parse(jokes,new Jokes());
+            Jokes jokes1= (Jokes)BaseParse.parse1(jokes,new Jokes());
             ArrayList<Jokes.ShowapiResBodyEntity.ContentlistEntity> jokesList=
                     jokes1.getShowapi_res_body().getContentlist();
             list.addAll(jokesList);
