@@ -84,18 +84,23 @@ public class SocialJxActivity extends BaseActivity implements XListView.IXListVi
     private Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
-           String jokes=(String)msg.obj;
-            Jokes jokes1= (Jokes)BaseParse.parse(jokes,new Jokes());
-            ArrayList<Jokes.ShowapiResBodyEntity.ContentlistEntity> jokesList=
-                    jokes1.getShowapi_res_body().getContentlist();
-            list.addAll(jokesList);
-            if (mxListView.getAdapter()!=null) {
-                jokesAdapter.notifyDataSetChanged();
-            }else {
-                jokesAdapter=new JokesAdapter(SocialJxActivity.this,list);
-                mxListView.setAdapter(jokesAdapter);
-                dialog.dismiss();
+           String jokesString=(String)msg.obj;
+            if (jokesString!=null) {
+                Jokes jokes= (Jokes)BaseParse.parse(jokesString,new Jokes());
+                ArrayList<Jokes.ShowapiResBodyEntity.ContentlistEntity> jokesList=
+                        jokes.getShowapi_res_body().getContentlist();
+                if (jokesList!=null) {
+                    list.addAll(jokesList);
+                    if (mxListView.getAdapter()!=null) {
+                        jokesAdapter.notifyDataSetChanged();
+                    }else {
+                        jokesAdapter=new JokesAdapter(SocialJxActivity.this,list);
+                        mxListView.setAdapter(jokesAdapter);
+                        dialog.dismiss();
+                    }
+                }
             }
+
         }
     };
 

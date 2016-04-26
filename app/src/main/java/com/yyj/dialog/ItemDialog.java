@@ -52,7 +52,7 @@ public class ItemDialog extends DialogFragment implements View.OnClickListener{
                 if (!urls.contains(url)) {
                     MyDataBase.getInstance().addNews(news);
                 } else {
-                    Toast.makeText(getActivity(),"请不要重复添加收藏。",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),"您已收藏过该内容。",Toast.LENGTH_SHORT).show();
                 }
                 itemDialog.dismiss();
                 break;

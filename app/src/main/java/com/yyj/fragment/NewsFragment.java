@@ -107,20 +107,24 @@ public class NewsFragment extends Fragment implements XListView.IXListViewListen
     private Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
-            String news = (String) msg.obj;
-            News news1= (News) BaseParse.parse(news,new News());
-            ArrayList<News.ShowapiResBodyEntity.NewslistEntity> newslist;
-            newslist=news1.getShowapi_res_body().getNewslist();
-            list.addAll(newslist);
-            if (mListView.getAdapter()!=null){
-                newsAdapter.notifyDataSetChanged();
-            }else {
-                isNoImage = BaseSharePreferences.getInstance().getNoImage();
-                newsAdapter= new NewsAdapter(getActivity(),list,isNoImage);
-                mListView.setAdapter(newsAdapter);
-                dialog.dismiss();
-            }
+            String newsString = (String) msg.obj;
+            if (newsString!=null) {
+                News news= (News) BaseParse.parse(newsString,new News());
+                ArrayList<News.ShowapiResBodyEntity.NewslistEntity> newslist;
+                newslist=news.getShowapi_res_body().getNewslist();
+                if (newslist!=null) {
+                    list.addAll(newslist);
+                    if (mListView.getAdapter()!=null){
+                        newsAdapter.notifyDataSetChanged();
+                    }else {
+                        isNoImage = BaseSharePreferences.getInstance().getNoImage();
+                        newsAdapter= new NewsAdapter(getActivity(),list,isNoImage);
+                        mListView.setAdapter(newsAdapter);
+                        dialog.dismiss();
+                    }
+                }
 
+            }
         }
     };
 
