@@ -10,12 +10,15 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceError;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.yyj.dialog.LoadingDialog;
 import com.yyj.ui.ChangeTheme;
@@ -66,7 +69,7 @@ public class WebViewActivity extends BaseActivity{
         webView.setWebViewClient(new MyWebViewClient());
         webView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
         WebSettings webSettings = webView.getSettings();
-        webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);//不使用缓存
+        webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);//不使用缓存
         webSettings.setAllowFileAccess(true);// 若html是一个文件框的话,就可以浏览本地文件
         webSettings.setBuiltInZoomControls(true);
         webSettings.setDatabaseEnabled(true);
@@ -77,6 +80,7 @@ public class WebViewActivity extends BaseActivity{
         webSettings.setDefaultZoom(WebSettings.ZoomDensity.FAR);
         webSettings.getJavaScriptEnabled();
         webSettings.setJavaScriptEnabled(true);
+        webSettings.setAppCacheEnabled(true);
         if (webView != null ) {
         if (url != null) {
                 webView.loadUrl(url);
@@ -139,6 +143,12 @@ public class WebViewActivity extends BaseActivity{
         public boolean shouldOverrideUrlLoading(WebView view ,String url){ //网页加载时的连接的网址
             view.loadUrl(url);
             return false;
+        }
+
+        @Override
+        public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
+            super.onReceivedError(view, request, error);
+            Toast.makeText(WebViewActivity.this,"请检查您的网络连接~",Toast.LENGTH_SHORT).show();
         }
     }
 }

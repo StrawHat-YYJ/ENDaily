@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.administrator.endaily.AboutActivity;
 import com.example.administrator.endaily.CollectActivity;
 import com.example.administrator.endaily.R;
 import com.example.administrator.endaily.SetActivity;
@@ -23,8 +24,10 @@ public class MoreFragment extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.layout_more,container,false);
-        LinearLayout setLayout = (LinearLayout) view.findViewById(R.id.more_settting_layout);
-        LinearLayout collectLayout= (LinearLayout) view.findViewById(R.id.more_setting_collect);
+        LinearLayout setLayout = (LinearLayout) view.findViewById(R.id.more_setting_layout);
+        LinearLayout collectLayout= (LinearLayout) view.findViewById(R.id.more_collect_layout);
+        LinearLayout aboutLayout = (LinearLayout) view.findViewById(R.id.more_about_layout);
+        aboutLayout.setOnClickListener(this);
         setLayout.setOnClickListener(this);
         collectLayout.setOnClickListener(this);
         return view;
@@ -33,13 +36,19 @@ public class MoreFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.more_settting_layout:
+            case R.id.more_setting_layout:
                 Intent intent = new Intent(getActivity(), SetActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.more_setting_collect:
+            case R.id.more_collect_layout:
                 Intent intent1 = new Intent(getActivity(), CollectActivity.class);
                 startActivity(intent1);
+                break;
+            case R.id.more_about_layout:
+                Intent intent2 = new Intent(getActivity(), AboutActivity.class);
+                startActivity(intent2);
+                break;
+            default:
                 break;
         }
     }

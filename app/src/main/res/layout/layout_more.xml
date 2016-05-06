@@ -4,30 +4,31 @@
     android:layout_height="match_parent"
     android:background="?attr/containerBackground">
     <LinearLayout
-        android:id="@+id/more_settting_layout"
+        android:id="@+id/more_setting_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp">
         <ImageView
             android:layout_width="30dip"
             android:layout_height="30dip"
-            android:src="@mipmap/set"/>
+            android:src="@mipmap/set" />
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="30dip"
             android:layout_marginLeft="10dp"
             android:text="设置"
             android:textSize="20sp"
+            android:gravity="center"
             android:textColor="?attr/textColor"/>
     </LinearLayout>
     <TextView
         android:id="@+id/more_tv1"
         android:layout_width="match_parent"
         android:layout_height="10dp"
-        android:layout_below="@+id/more_settting_layout"
+        android:layout_below="@+id/more_setting_layout"
         android:background="?attr/hintBackground"/>
     <LinearLayout
-        android:id="@+id/more_setting_collect"
+        android:id="@+id/more_collect_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
@@ -38,12 +39,39 @@
             android:src="@mipmap/more_collect"/>
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="30dip"
             android:layout_marginLeft="10dp"
             android:text="收藏"
             android:textSize="20sp"
+            android:gravity="center"
             android:textColor="?attr/textColor"/>
     </LinearLayout>
+    <TextView
+        android:id="@+id/more_tv2"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_below="@+id/more_collect_layout"
+        android:background="?attr/hintBackground"/>
+    <LinearLayout
+        android:id="@+id/more_about_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:layout_below="@+id/more_tv2">
+        <ImageView
+            android:layout_width="30dip"
+            android:layout_height="30dip"
+            android:src="@mipmap/about"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dip"
+            android:layout_marginLeft="10dp"
+            android:text="关于"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:textColor="?attr/textColor"/>
+    </LinearLayout>
+
 
 
 

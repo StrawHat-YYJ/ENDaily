@@ -3,8 +3,8 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/red_light</item>
+        <item name="colorPrimaryDark">@color/red_light</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
@@ -20,7 +20,7 @@
     <!-- 夜间模式 -->
     <style name="AppTheme.night" parent="AppTheme">
         <item name="titleBackground">@color/gray_dark</item>
-        <item name="containerBackground">@color/green</item>
+        <item name="containerBackground">@color/gray</item>
         <item name="titleColor">@color/white_dark</item>
         <item name="textColor">@color/white_smoke</item>
         <item name="hintBackground">@color/gray</item>

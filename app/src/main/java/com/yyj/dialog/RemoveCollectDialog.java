@@ -66,7 +66,7 @@ public class RemoveCollectDialog extends DialogFragment{
 
     @Override
     public void onResume() {
-        getDialog().getWindow().setLayout(350,200);
+        getDialog().getWindow().setLayout(350,175);
         super.onResume();
     }
 }
